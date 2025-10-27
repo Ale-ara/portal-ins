@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>[INS] Portal dos Instrutores</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* 🎨 VARIÁVEIS DE CORES */
+:root {
+  --azul: #1a237e;
+  --ins: #0059a7;
+  --amarelo: #ffcc00;
+  --fundo: #0a0a0f;
+  --texto: #f4f4f4;
+  --efe: #ffffff;
+  --glass: rgba(255, 255, 255, 0.05);
+  --scroll-color: var(--ins);
+}
+
+/* 🌐 BASE */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--fundo);
+  color: var(--texto);
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+/* 🔹 SEÇÃO PRINCIPAL (HERO) */
+#ins {
+  background: linear-gradient(90deg, var(--ins) 20%, rgba(16, 22, 98, 0.748) 100%),
+              url(https://i.imgur.com/5HBJY5z.png) right center / cover no-repeat;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+#ins::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+#ins .content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+#ins img.logo {
+  width: 200px;
+  margin-bottom: 20px;
+  animation: flutuar 3s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+#ins h1 {
+  font-size: 3rem;
+  color: #fff;
+  margin: 0;
+}
+
+#ins p {
+  font-size: 1.1rem;
+  opacity: 0.95;
+  margin-top: 10px;
+  color: #e6e6e6;
+  line-height: 1.6;
+}
+
+/*  BOTÕES */
+.botao-container {
+  margin-top: 35px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.botao {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #fff;
+  background: transparent;
+  border: 1.5px solid rgba(0, 140, 255, 0.7);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.botao::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(0, 140, 255, 0.3), transparent);
+  transform: skewX(-25deg);
+  transition: all 0.5s ease;
+}
+
+.botao:hover::before {
+  left: 125%;
+}
+
+.botao:hover {
+  border-color: #008cff;
+  box-shadow: 0 0 10px #008cff80;
+  transform: translateY(-2px);
+}
+
+.botao i {
+  font-size: 1rem;
+}
+
+/*  RANKING */
+#ranking {
+  padding: 60px 20px;
+  background: var(--glass);
+  backdrop-filter: blur(6px);
+  text-align: center;
+}
+
+#ranking h2 {
+  color: var(--amarelo);
+  margin-bottom: 40px;
+  font-size: 2rem;
+}
+
+.podio {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.card-podio {
+  background: var(--glass);
+  padding: 20px;
+  border-radius: 20px;
+  width: 180px;
+  text-align: center;
+  backdrop-filter: blur(4px);
+  transition: 0.3s;
+}
+.card-podio:hover {
+  transform: translateY(-8px);
+}
+
+.card-podio p {
+  margin: 4px 0 6px;
+  color: #cfcfcf;
+  font-size: 0.95rem;
+}
+
+
+.card-podio img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--ins);
+}
+
+.card-podio h3 {
+  margin: 10px 0 5px;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.card-podio span {
+  color: var(--amarelo);
+  font-weight: bold;
+}
+
+/* 🧾 TABELA GERAL */
+table {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 900px;
+  border-collapse: collapse;
+  background: var(--glass);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: center;
+}
+
+th {
+  background: var(--ins);
+  color: #fff;
+}
+
+tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* 🧠 SEÇÃO DE PROJETOS */
+#projetos {
+  padding: 60px 20px;
+}
+
+#projetos h2 {
+  color: var(--efe);
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2rem;
+}
+
+.card-projeto {
+  background: var(--glass);
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 800px;
+  backdrop-filter: blur(4px);
+  border-left: 6px solid var(--ins);
+  transition: 0.3s ease;
+}
+
+.card-projeto h3 {
+  margin: 0 0 5px;
+  color: var(--amarelo);
+  cursor: pointer;
+}
+
+.card-projeto p {
+  margin: 3px 0;
+  font-size: 0.95rem;
+}
+
+.card-projeto .detalhes {
+  display: none;
+  margin-top: 8px;
+}
+
+.card-projeto.ativo .detalhes {
+  display: block;
+}
+
+.toggle-btn {
+  display: inline-block;
+  margin-top: 10px;
+  color: #008cff;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ⬆️ BOTÃO VOLTAR AO TOPO */
+#btnTopo {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--ins);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px #0059a780;
+  transition: 0.3s;
+  z-index: 1000;
+}
+#btnTopo:hover {
+  transform: translateY(-3px);
+  background: #0070d1;
+}
+
+/*  SCROLLBAR */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scroll-color) !important;
+  background-image: linear-gradient(to bottom, var(--scroll-color), #0059a780) !important;
+}
+::-webkit-scrollbar-track {
+  background: var(--glass);
+}
+
+/*  RODAPÉ */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 0.9rem;
+  color: #ccc;
+}
+</style>
+</head>
+
+<body>
+  <!-- 🟦 SEÇÃO PRINCIPAL -->
+<section id="ins">
+  <div class="content">
+    <img src="https://i.imgur.com/2HJ0aLw.png" alt="Logo Instrutores" class="logo" />
+    <h1>Portal dos Instrutores</h1>
+    <p>Ser instrutor é carregar o dever e o orgulho de formar os melhores. Aqui você encontrará materiais e apostilas que vão além da teoria — são guias práticos para quem deseja evoluir, liderar e inspirar dentro da RCC.</p>
+
+    <div class="botao-container">
+      <a href="#ranking" class="botao">
+        Confira o Ranking de Gratificações <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </a>
+      <a href="#projetos" class="botao">
+        Confira os Projetos <i class="fa-solid fa-clipboard-list"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 🏆 RANKING -->
+<section id="ranking">
+  <h2>Ranking de Gratificações</h2>
+  <div class="podio" id="podio">
+    <div class="card-podio">
+      <img src="http://www.habbo.com.br/habbo-imaging/avatarimage?&user=Qox&action=std&direction=3&head_direction=3&img_format=png&gesture=sml&headonly=0&size=l" alt="1° lugar">
+      <h3>1° Lugar</h3>
+      <p><b>Chefe</b></p>
+      <span>150 pts</span>
+    </div>
+    <div class="card-podio">
+      <img src="http://www.habbo.com.br/habbo-imaging/avatarimage?&user=joaobruxao&action=std&direction=3&head_direction=3&img_format=png&gesture=sml&headonly=0&size=l" alt="2° lugar">
+      <h3>2° Lugar</h3>
+      <p><b>Lucas</b></p>
+      <span>120 pts</span>
+    </div>
+    <div class="card-podio">
+      <img src="http://www.habbo.com.br/habbo-imaging/avatarimage?&user=NeguinDaPesada&action=std&direction=3&head_direction=3&img_format=png&gesture=sml&headonly=0&size=l" alt="3° lugar">
+      <h3>3° Lugar</h3>
+      <p><b>Mirex</b></p>
+      <span>100 pts</span>
+    </div>
+  </div>
+
+  <table id="tabela-ranking">
+    <thead>
+      <tr>
+        <th>Posição</th>
+        <th>Nickname</th>
+        <th>Pontos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1°</td><td>Qox</td><td>150</td></tr>
+      <tr><td>2°</td><td>joaobruxao</td><td>120</td></tr>
+      <tr><td>3°</td><td>NeguinDaPesada</td><td>100</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 🧩 PROJETOS -->
+<section id="projetos">
+  <h2>Projetos e Sugestões</h2>
+  <div id="lista-projetos">
+    <div class="card-projeto">
+      <h3>Reestruturação de Treinamentos</h3>
+      <div class="detalhes">
+        <p><b>Autor:</b> Chefe</p>
+        <p><b>Modalidade:</b> Projeto</p>
+        <p><b>Status:</b> Aprovado</p>
+        <p><b>Data:</b> 20/10/2025</p>
+      </div>
+      <span class="toggle-btn">Ver mais <i class="fa-solid fa-chevron-down"></i></span>
+    </div>
+
+    <div class="card-projeto">
+      <h3>Melhoria nos Formulários</h3>
+      <div class="detalhes">
+        <p><b>Autor:</b> Lucas</p>
+        <p><b>Modalidade:</b> Sugestão</p>
+        <p><b>Status:</b> Em análise</p>
+        <p><b>Data:</b> 25/10/2025</p>
+      </div>
+      <span class="toggle-btn">Ver mais <i class="fa-solid fa-chevron-down"></i></span>
+    </div>
+  </div>
+</section>
+
+
+  <!-- ⚙️ RODAPÉ -->
+  <footer>
+    © INS - joaogostoso
+  </footer>
+
+  <!-- ⬆️ BOTÃO VOLTAR AO TOPO -->
+  <button id="btnTopo" title="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script>
+/* 🔄 ROLAGEM SUAVE */
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const destino = document.querySelector(this.getAttribute('href'));
+    destino.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+/* ⬆️ BOTÃO VOLTAR AO TOPO */
+const btnTopo = document.getElementById('btnTopo');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 400) {
+    btnTopo.style.display = 'flex';
+  } else {
+    btnTopo.style.display = 'none';
+  }
+});
+btnTopo.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* 📂 EXPANDIR/OCULTAR PROJETOS */
+document.querySelectorAll('.toggle-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.card-projeto');
+    card.classList.toggle('ativo');
+    const icon = btn.querySelector('i');
+    if (card.classList.contains('ativo')) {
+      btn.innerHTML = 'Ocultar <i class="fa-solid fa-chevron-up"></i>';
+    } else {
+      btn.innerHTML = 'Ver mais <i class="fa-solid fa-chevron-down"></i>';
+    }
+  });
+});
+</script>
+</body>
+</html>
